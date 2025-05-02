@@ -13,7 +13,7 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res) => {
-  res.status(500).send({ message: 'Ha ocurrido un error en el servidor' });
+  res.status(500).send({ message: 'Ocorreu um erro no servidor' });
 });
 
 app.listen(PORT, () => {

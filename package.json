@@ -1,0 +1,25 @@
+{
+  "name": "web_project_around_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint .",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Danilo Morais",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.31.0",
+    "express": "^5.1.0"
+  }
+}
+
+ 

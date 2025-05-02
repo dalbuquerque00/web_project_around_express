@@ -9,11 +9,11 @@ app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
 
 app.use((req, res) => {
-  res.status(404).send({ message: 'A solicitação não foi encontrada' });
+  res.status(404).send({ message: 'Recurso solicitado no encontrado' });
 });
 
 app.use((err, req, res) => {
-  res.status(500).send({ message: 'Ocorreu um erro no servidor' });
+  res.status(500).send({ message: 'Ha ocurrido un error en el servidor' });
 });
 
 app.listen(PORT, () => {

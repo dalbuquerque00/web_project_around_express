@@ -15,6 +15,13 @@ mongoose.connect('mongodb://localhost:27017/aroundb')
   });
 
   app.use(express.json());
+// ID de usuario teste do Postman
+  app.use((req, res, next) => {
+    req.user = {
+      _id: '682754521b00ad0324c96eb8',
+    };
+    next();
+  });
 
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);

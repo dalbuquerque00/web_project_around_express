@@ -1,33 +1,56 @@
-# 🗂️ Around the U.S. – Back-End API
+# 🗂️ Web Project Around Express
 
-Este é o back-end da aplicação **Around the U.S.**, uma API REST construída com **Node.js** e **Express**. Ela gerencia dados de usuários e cartões, servindo como camada de comunicação entre o cliente e os recursos armazenados no servidor.
-
----
-
-## 📦 Tecnologias Utilizadas
-
-- **Node.js** — Ambiente de execução JavaScript server-side  
-- **Express.js** — Framework minimalista e flexível para criação de servidores HTTP  
-- **File System (fs)** — Leitura e manipulação de arquivos JSON  
-- **ESLint** — Linter para garantir a padronização e qualidade do código  
-- **EditorConfig** — Configuração compartilhada de estilo de código  
-- **Nodemon** — Monitoramento e recarregamento automático durante o desenvolvimento
+Este projeto é uma API RESTful desenvolvida com Node.js, Express e MongoDB. Ele permite a criação, leitura, atualização e exclusão (CRUD) de usuários e cartões, seguindo a arquitetura MVC.
 
 ---
 
-## 📁 Estrutura de Diretórios
+## 🚀 Tecnologias Utilizadas
+
+- **Node.js** – Ambiente de execução JavaScript server-side
+- **Express.js** – Framework web leve e robusto
+- **MongoDB** + **Mongoose** – Banco de dados NoSQL e ODM
+- **Postman** – Testes de requisições HTTP
+- **MongoDB Compass** – Interface gráfica para visualização dos dados
+- **Nodemon** – Reload automático em ambiente de desenvolvimento
+
+---
+
+## 📁 Estrutura do Projeto
 
 ```
-/
-├── data/         # Arquivos JSON simulando base de dados
-├── routes/       # Definições de rotas para usuários e cartões
-├── app.js        # Arquivo principal da aplicação Express
-├── package.json  # Metadados e scripts do projeto
+web_project_around_express/
+├── controllers/       # Lógica de negócios para usuários e cards
+├── models/            # Schemas Mongoose
+├── routes/            # Definição das rotas da API
+├── app.js             # Arquivo principal do servidor
+├── package.json       # Configuração do projeto
 ```
 
 ---
 
-## 🚀 Como Executar
+## 📡 Endpoints da API
+
+### Usuários (`/users`)
+| Método | Rota                 | Descrição                                |
+|--------|----------------------|------------------------------------------|
+| GET    | `/users`             | Retorna todos os usuários                |
+| GET    | `/users/:userId`     | Retorna um usuário por ID                |
+| POST   | `/users`             | Cria um novo usuário                     |
+| PATCH  | `/users/me`          | Atualiza nome e descrição do usuário     |
+| PATCH  | `/users/me/avatar`   | Atualiza o avatar do usuário             |
+
+### Cartões (`/cards`)
+| Método | Rota                    | Descrição                                |
+|--------|-------------------------|------------------------------------------|
+| GET    | `/cards`                | Retorna todos os cards                   |
+| POST   | `/cards`                | Cria um novo card                        |
+| DELETE | `/cards/:cardId`        | Remove um card (se for o dono)           |
+| PUT    | `/cards/:cardId/likes`  | Adiciona um like ao card                 |
+| DELETE | `/cards/:cardId/likes`  | Remove um like do card                   |
+
+---
+
+## 🧪 Como Rodar Localmente
 
 1. Instale as dependências:
 
@@ -35,40 +58,39 @@ Este é o back-end da aplicação **Around the U.S.**, uma API REST construída 
 npm install
 ```
 
-2. Inicie o servidor:
+2. Certifique-se de que o MongoDB esteja rodando localmente:
 
 ```bash
-npm run start
+brew services start mongodb-community@6.0
 ```
 
-3. Para desenvolvimento com hot reload:
+3. Inicie o servidor com:
 
 ```bash
 npm run dev
 ```
 
----
-
-## 📡 Endpoints da API
-
-| Método | Rota           | Descrição                          |
-|--------|----------------|------------------------------------|
-| GET    | `/users`       | Retorna todos os usuários          |
-| GET    | `/users/:id`   | Retorna um usuário pelo seu `_id` |
-| GET    | `/cards`       | Retorna todas as cartas            |
+4. Acesse via Postman em: `http://localhost:3000`
 
 ---
 
-## 📘 Códigos de Resposta
+## 💾 Banco de Dados
 
-- `200 OK` – Requisição bem-sucedida  
-- `404 Not Found` – Recurso não encontrado  
-- `500 Internal Server Error` – Erro no servidor
+O banco `aroundb` será criado automaticamente ao executar o projeto pela primeira vez. Ele contém as coleções:
+
+- `users`
+- `cards`
+
+Você pode visualizá-las com o MongoDB Compass.
 
 ---
 
-## 🧪 Requisitos
+## 🔐 Autenticação (a implementar)
 
-- Node.js `^18.x` ou superior
-- npm `^9.x` ou superior
+Atualmente, o ID do usuário é injetado manualmente no `req.user` via middleware. Em versões futuras, recomenda-se:
 
+- Autenticação com JWT
+- Middleware de proteção de rotas
+- Registro e login de usuários
+
+---

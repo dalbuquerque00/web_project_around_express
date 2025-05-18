@@ -14,7 +14,7 @@ module.exports.createCard = (req, res) => {
     .then((card) => res.status(201).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        res.status(400).send({ message: 'Dados inválidos para criar a página' });
+        res.status(400).send({ message: 'Dados inválidos para criar o cartão' });
       } else {
         res.status(500).send({ message: 'Erro do servidor' });
       }
@@ -27,9 +27,9 @@ module.exports.deleteCard = (req, res) => {
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
-        res.status(400).send({ message: 'ID da página inválido' });
+        res.status(400).send({ message: 'ID da cartão inválido' });
       } else if (err.name === 'DocumentNotFoundError') {
-        res.status(404).send({ message: 'Página não encontrada' });
+        res.status(404).send({ message: 'Cartão não encontrado' });
       } else {
         res.status(500).send({ message: 'Erro do servidor' });
       }
@@ -46,9 +46,9 @@ module.exports.likeCard = (req, res) => {
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
-        res.status(400).send({ message: 'ID da página inválido' });
+        res.status(400).send({ message: 'ID da cartão inválido' });
       } else if (err.name === 'DocumentNotFoundError') {
-        res.status(404).send({ message: 'Página não encontrada' });
+        res.status(404).send({ message: 'Cartão não encontrado' });
       } else {
         res.status(500).send({ message: 'Erro do servidor' });
       }
@@ -65,9 +65,9 @@ module.exports.dislikeCard = (req, res) => {
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
-        res.status(400).send({ message: 'ID da página inválido' });
+        res.status(400).send({ message: 'ID do cartão inválido' });
       } else if (err.name === 'DocumentNotFoundError') {
-        res.status(404).send({ message: 'Página não encontrada' });
+        res.status(404).send({ message: 'Cartão não encontrado' });
       } else {
         res.status(500).send({ message: 'Erro do servidor' });
       }

@@ -61,7 +61,7 @@ npm install
 2. Certifique-se de que o MongoDB esteja rodando localmente:
 
 ```bash
-brew services start mongodb-community@6.0
+brew services start mongodb-community@7.0 
 ```
 
 3. Inicie o servidor com:

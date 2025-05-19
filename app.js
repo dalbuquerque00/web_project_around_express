@@ -14,14 +14,14 @@ mongoose.connect('mongodb://localhost:27017/aroundb')
     console.error('Erro ao tentar conectar com MongoDB:', err);
   });
 
-  app.use(express.json());
+app.use(express.json());
 // ID de usuario teste do Postman
-  app.use((req, res, next) => {
-    req.user = {
-      _id: '682754521b00ad0324c96eb8',
-    };
-    next();
-  });
+app.use((req, res, next) => {
+  req.user = {
+    _id: '682754521b00ad0324c96eb8',
+  };
+  next();
+});
 
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
